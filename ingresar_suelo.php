@@ -1,24 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>CIREN</title>
-   	<meta charset="UTF-8">
+   	 <meta charset="UTF-8">
 </head>
+
 <body>
+<hr>
 <h2>Ingresar Información Suelo</h2>
 <form method="post" action="ingresar_suelo.php">
-	<p>Identificador: <input type="text" name="identificador"></p>
-	<p>Tipo de Suelo: <input type="text" name="tipo_suelo"></p>
-	<p>Descripción: <input type="text" name="descripcion"></p>
-	<p>Serie: <input type="text" name="serie"></p>
-	<p>Variación: <input type="text" name="variacion"></p>
-	<p>Localización: <input type="text" name="localizacion"></p>
-
-	<input type="submit" name="Enviar">
+		<table>
+	<tr> <td>Identificador: </td><td> <input type="text" name="identificador"> </td> </tr>
+	<tr> <td>Tipo de Suelo: </td><td> <input type="text" name="tipo_suelo"> </td> </tr>
+	<tr> <td>Descripción: </td><td> <input type="text" name="descripcion"> </td> </tr>
+	<tr> <td>Serie: </td><td> <input type="text" name="serie"> </td> </tr>
+	<tr> <td>Variación: </td><td> <input type="text" name="variacion"> </td> </tr>
+	<tr> <td>Localización: </td><td> <input type="text" name="localizacion"> </td> </tr>
+	<td><br></br><br></br></td>
+	<td>
+	<input type="submit" name="Enviar"></td>
+	</table>
+<hr>
 
 	<?php
-	require_once 'conexion.php';
-	//if(isset($_POST['funcion'])) {
+	include 'conexion.php';
+	if($_POST['identificador']!=""){
+
 	$identificador = $_POST['identificador'];
 	$tipo_suelo = $_POST['tipo_suelo'];
 	$descripcion = $_POST['descripcion'];
@@ -30,9 +37,20 @@
 	$insercion = pg_query($con,$sql);
 
 	$sql = "INSERT INTO informacion VALUES(".$identificador.", '".$localizacion."');" ;
-	$insercion = pg_query($con,$sql);	
-	//}
-	?>
+	$insercion = pg_query($conexion,$sql);
+
+if($insercion){
+	echo "Guardado con exito.","<br></br>","<a href='ingresar.php'><h>Atrás</h></a>",
+		"&nbsp;&emsp; <a href='index.php'><h>Inicio</h></a>";
+			}
+	else{
+			echo "Se ha producido un error al guardar, revise los datos";
+			}
+	}
+else{
+	echo "Datos incompletos, complete adecuadamente";
+	}
+?>
 </form>
 </body>
 </html>

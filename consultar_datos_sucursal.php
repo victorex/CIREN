@@ -1,5 +1,5 @@
 
-<html>  
+<html>
 <head>
 <title>Consultar Sucursal</title>
 <style type="text/css">
@@ -19,14 +19,14 @@ td{
 </head>
 <body>
   <?php
-  require_once 'conexion.php';
+  include 'Conexion.php';
 
   if(isset($_POST['id'])) {
 
   $id = $_POST['id'];
 
-  $sql = "SELECT * FROM sucursal WHERE id = ".$id.";"; 
-  $resultado = pg_query($con,$sql) or die('error getting data');    
+  $sql = "SELECT * FROM sucursal WHERE id = ".$id.";";
+  $resultado = pg_query($conexion,$sql) or die('error getting data');
 
   echo "<table>";
   echo "<tr><th>ID</th><th>Dirección</th><th>Ciudad</th></tr>";
@@ -40,9 +40,19 @@ td{
     echo $row['ciudad'];
     echo "</td></tr>";
   }
-  
+
   echo "</table>";
   }
+
+  if($id){
+    echo "<br></br>","<a href='consultar_sucursal.php'><h>Atrás</h></a>",
+      "&nbsp;&emsp; <a href='index.php'><h>Inicio</h></a>";
+        }
+    else{
+        echo "Se ha producido un error al guardar, revise los datos";
+        }
+
+
 ?>
 </body>
 </head>

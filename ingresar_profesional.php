@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>CIREN</title>
    	 <meta charset="UTF-8">
 </head>
+
 <body>
-
+<hr>
 <h2>Ingresar Profesional</h2>
-<form method="post" action="ingresar_profesional.php">
-	<p>RUT: <input type="text" name="rut"></p>
-	<p>Nombre: <input type="text" name="nombre"></p>
-	<p>Email: <input type="text" name="email"></p>
-	<p>Cargo: <input type="text" name="cargo"></p>
-	<p>Profesion: <input type="text" name="profesion"></p>
-	<p>Descripcion: <input type="text" name="descripcion"></p>
-	<p>Universidad de Egreso: <input type="text" name="u_egreso"></p>
-	<p>Telefono: <input type="text" name="telefono"></p>
-
-	<input type="submit" name="Enviar">
-
+    <p>Ingrese los datos del nuevo profesional</p>
+	<form method="post" action="ingresar_profesional.php">
+	<table>
+	<tr> <td>RUT: </td><td> <input type="text" name="rut"> </td> </tr>
+	<tr> <td>Nombre: </td><td> <input type="text" name="nombre"> </td> </tr>
+	<tr> <td>Email: </td><td> <input type="text" name="email"> </td> </tr>
+	<tr> <td>Cargo: </td><td> <input type="text" name="cargo"> </td> </tr>
+	<tr> <td>Profesion: </td><td> <input type="text" name="profesion"> </td> </tr>
+	<tr> <td>Descripcion: </td><td> <input type="text" name="descripcion"> </td> </tr>
+	<tr> <td>Universidad de Egreso: </td><td> <input type="text" name="u_egreso"> </td> </tr>
+	<tr> <td>Telefono: </td><td> <input type="text" name="telefono"> </td> </tr>
+	<td><br></br><br></br></td>
+	<td><input type="submit" name="Enviar"></td>
+	</table>
+<hr>
+	
 	<?php
-	require_once 'conexion.php';
-	if(isset($_POST['funcion'])) {
+	include 'conexion.php';
+	if($_POST['rut']!=""){
 
 	$rut = $_POST['rut'];
 	$nombre = $_POST['nombre'];
@@ -33,12 +38,22 @@
 	$telefono = $_POST['telefono'];
 
 	$sql = "INSERT INTO personal VALUES('".$rut."', '".$nombre."', '".$email."', '".$cargo."', '".$profesion."', '".$descripcion."', '".$u_egreso."', ".$telefono.");" ;
-	$insercion = pg_query($con,$sql);
-
+	$insercion = pg_query($conexion,$sql);
+	
 	$sql = "INSERT INTO profesional VALUES('".$rut."');" ;
-	$insercion = pg_query($con,$sql);		
-
-	}
+	$insercion = pg_query($conexion,$sql);
+		
+	if($insercion){
+		echo "Guardado con exito.","<br></br>","<a href='ingresar_personal.php'><h>Atrás</h></a>",
+			"&nbsp;&emsp; <a href='index.php'><h>Inicio</h></a>";
+        }
+    else{
+        echo "Se ha producido un error al guardar, revise los datos";
+        }
+    }
+else{
+    echo "Datos incompletos, complete adecuadamente";
+    }
 	?>
 </form>
 </body>

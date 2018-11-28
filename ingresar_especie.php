@@ -12,7 +12,9 @@
 		<table>
 	<tr> <td>Identificador Forestal: </td><td> <input type="text" name="identificador"> </td> </tr>
 	<tr> <td>ID: </td><td> <input type="text" name="id_especie"> </td> </tr>
-	<tr> <td>Especie: </td><td> <input type="text" name="especie"> </td> </tr>
+	<tr> <td>Especie: </td><td> <select name="especie">
+			<option value="Nativa" selected>Nativa</option>
+			<option value="Introducida">Introducida</option>	</td> </tr>
 	<tr> <td>Cantidad: </td><td> <input type="text" name="cantidad"> </td> </tr>
 	<tr> <td>Nombre: </td><td> <input type="text" name="nombre"> </td> </tr>
 	<tr> <td>Consumo de Agua: </td><td> <input type="text" name="consumo_agua"> </td> </tr>
@@ -37,6 +39,9 @@
 	$insercion = pg_query($conexion,$sql);
 
 	$sql = "INSERT INTO registra VALUES(".$identificador.", ".$id_especie.");" ;
+	$insercion = pg_query($conexion,$sql);
+	
+	$sql = "INSERT INTO forestal VALUES(".$identificador.");" ;
 	$insercion = pg_query($conexion,$sql);
 
 	if($insercion){

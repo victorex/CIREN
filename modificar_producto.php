@@ -7,9 +7,9 @@
 
 <body>
 
-<h2>Consultar Servicio</h2>
-<form method="post" action="consultar_datos_servicio.php">
-	<p>Nombre: <input type="text" name="nombre"></p>
+<h2>Modificar Producto</h2>
+<form method="post" action="modificar_datos_producto.php">
+	<p>ID: <input type="text" name="id"></p>
 	<input type="submit" name="submit" value="Buscar ">
 </form>
 

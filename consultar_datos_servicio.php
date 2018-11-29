@@ -25,7 +25,7 @@ td{
 
   $nombre = $_POST['nombre'];
 
-  $sql = "SELECT * FROM producto WHERE nombre = '".$nombre."';";
+  $sql = "SELECT * FROM servicio WHERE nombre = '".$nombre."';";
   $resultado = pg_query($conexion,$sql) or die('error getting data');
 
   echo "<table>";
@@ -35,9 +35,9 @@ td{
     echo "<tr><td>";
     echo $row['nombre'];
     echo "</td><td>";
-    echo $row['id_producto'];
+    echo $row['id_servicio'];
     echo "</td><td>";
-    echo $row['categoria_p'];
+    echo $row['categoria_s'];
     echo "</td><td>";
     echo $row['descripcion'];
     echo "</td></tr>";

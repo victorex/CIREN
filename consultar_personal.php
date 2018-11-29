@@ -7,7 +7,7 @@
 
 <body>
 
-<h2>Consultar Sucursal</h2>
+<h2>Consultar Personal</h2>
 <form method="post" action="consultar_datos_personal.php">
 	<p>Rut: <input type="text" name="rut"></p>
 	<input type="submit" name="submit" value="Buscar ">

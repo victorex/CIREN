@@ -7,7 +7,7 @@
 
 <body>
 
-<h2>Consultar Sucursal</h2>
+<h2>Consultar Producto</h2>
 <form method="post" action="consultar_datos_producto.php">
 	<p>Nombre: <input type="text" name="nombre"></p>
 	<input type="submit" name="submit" value="Buscar ">

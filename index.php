@@ -11,7 +11,7 @@
 <input type="button" onclick=" location.href='ingresar.php' " value="Ingresar Datos" name="boton" />
 <br></br>
 
-<input type="button" onclick=" location.href='gestionar.php' " value="Gestionar Datos" name="boton" />
+<input type="button" onclick=" location.href='modificar.php' " value="Modificar Datos" name="boton" />
 <br></br>
 
 <input type="button" onclick=" location.href='eliminar.php' " value="Eliminar Datos" name="boton" />

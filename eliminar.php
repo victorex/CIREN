@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>Gestionar</h1>
+<h1>Eliminar</h1>
 
 <input type="button" onclick=" location.href='eliminar_sucursal.php' " value="Eliminar Sucursal" name="boton" />
 <br></br>

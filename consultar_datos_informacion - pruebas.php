@@ -1,7 +1,7 @@
 
 <html>
 <head>
-<title>Consultar Sucursal</title>
+<title>Consultar Información</title>
 <style type="text/css">
 table{
   border: 1px solid black;
@@ -26,26 +26,33 @@ td{
   $identificador = $_POST['identificador'];
   $tipo_i = $_POST['tipo_i'];
   
-  $sql = "SELECT * FROM ".$tipo_i." WHERE identificador = ".$identificador.";";
-  $resultado = pg_query($conexion,$sql) or die('error getting data');
-
   echo "<table>";
-  //echo "<tr><th>Nombre</th><th>ID</th><th>Categoria</th><th>Descripcion</th></tr>";
-
-  while($row = pg_fetch_row($resultado)){
-/////Tabla	  
+/////Tabla	    
+  $sql2 = "SELECT column_name FROM information_schema.columns WHERE table_name = '".$tipo_i."';";
+  $resultado2 = pg_query($conexion,$sql2) or die('error getting data');
+  
+  while($row = pg_fetch_array($resultado2)){
+	  $num_rows = pg_num_rows($result);
     echo "<tr>";
-		foreach($row as $resultado) {
-			echo "<th>  . </th>";
+		for($i=0;$i<$num_rows;$i++) {
+			echo "<th>"$row[$i]"</th>";
+			//echo "<th>" . htmlspecialchars($resultado2) . "</th>";
 		}		
 	echo "</tr>";	  
-///////DATOS	  
+  }
+///////DATOS  
+  $sql = "SELECT * FROM ".$tipo_i." WHERE identificador = ".$identificador.";";
+  $resultado = pg_query($conexion,$sql) or die('error getting data');  
+  while($row = pg_fetch_row($resultado)){  	  
     echo "<tr>";
 		foreach($row as $resultado) {
 			echo "<td>" . htmlspecialchars($resultado) . "</td>";
 		}		
 	echo "</tr>";
-  }
+  } 
+
+
+ 
   echo "</table>";
   }
 
@@ -54,7 +61,7 @@ td{
       "&nbsp;&emsp; <a href='index.php'><h>Inicio</h></a>";
         }
     else{
-        echo "Se ha producido un error al guardar, revise los datos";
+        echo "Se ha producido un error, revise los datos";
         }
 
 

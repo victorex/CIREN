@@ -23,8 +23,8 @@
 <input type="button" onclick=" location.href='consultar_informacion.php' " value="Consultar Informacion" name="boton" />
 <br></br>
 
-<input type="button" onclick=" location.href='consultar_curso.php' " value="Consultar Curso" name="boton" />
-<br></br>
+<!-- <input type="button" onclick=" location.href='consultar_curso.php' " value="Consultar Curso" name="boton" />
+<br></br> -->
 
 </body>
 </html>
